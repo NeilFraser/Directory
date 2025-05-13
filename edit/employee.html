@@ -1,0 +1,97 @@
+<html>
+<head>
+  <title>Directory: Edit Employee</title>
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <script type="module" src="employee.js"></script>
+</head>
+<body>
+  <h1><a href="../">Directory</a> &gt; <a href="../employees.html">Employees</a> &gt; <strong>Edit</strong></h1>
+  <table>
+    <tr>
+      <th>Name</th>
+      <td><input id="employee_name" type="text"></td>
+    </tr>
+    <tr>
+      <th>Title</th>
+      <td><input id="employee_title" type="text"></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><input id="employee_email" type="email"></td>
+    </tr>
+    <tr>
+      <th>Phone</th>
+      <td><input id="employee_phone" type="tel"></td>
+    </tr>
+    <tr>
+      <th>Office</th>
+      <td id="employee_offices"></td>
+    </tr>
+    <tr>
+      <th>About</th>
+      <td><textarea id="employee_about"></textarea></td>
+    </tr>
+    <tr>
+      <th>Photos</th>
+      <td><a id="employee_photos" href="#" target="edit-photos-employee-">Edit photos. <img src="../external-link.png"></a></td>
+    </tr>
+    <tr>
+      <th>Skills</th>
+      <td>
+        <select id="employee_skills" multiple size="10"></select><br>
+        Use Ctrl-click to select multiple skills.<br>
+        <a href="skills.html" target="edit-skills">Edit skill list. <img src="../external-link.png"></a>
+      </td>
+    </tr>
+    <tr>
+      <th>Languages</th>
+      <td>
+        <div id="employee_languages"></div>
+        <p><button id="addLanguage">Add language</button></p>
+      </td>
+    </tr>
+    <tr>
+      <th>Birthday</th>
+      <td>
+        <input id="employee_birthday" type="number" min="1" max="31">
+        <select id="employee_birthmonth">
+          <option value="0">-Select-</option>
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>Start Date</th>
+      <td><input id="employee_startdate" type="date"></td>
+    </tr>
+    <tr>
+      <th>Active</th>
+      <td><input id="employee_active" type="checkbox"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button id="saveButton">Save</button>
+        <button id="cancelButton">Cancel</button>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button id="deleteButton">Delete</button>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

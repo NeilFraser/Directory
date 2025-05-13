@@ -1,0 +1,36 @@
+<html>
+<head>
+  <title>Directory: Employees</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script type="module" src="employees.js"></script>
+  <style>
+    #addButton {
+      float: right;
+      margin: 1ex;
+    }
+  </style>
+</head>
+<body>
+  <button id="addButton">+ Add Employee</button>
+  <h1><a href="./">Directory</a> &gt; <strong>Employees</strong></h1>
+  <p>
+    Filter by office:
+    <select id="office">
+      <option value="0">All offices</option>
+    </select>
+  </p>
+  <table class="striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+      </tr>
+    </thead>
+    <tbody id="data_tbody">
+
+    </tbody>
+  </table>
+</body>
+</html>
