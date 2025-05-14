@@ -53,9 +53,19 @@ function renderOffice(office, photos) {
   const address = utils.htmlEscape(office['address'] || '');
   document.getElementById('office_address').innerHTML = address.replace(/\n/g, '<br>');
 
-  if (office['latitude'] !== null && office['longitude'] !== null) {
-    const coordinates = office['latitude'] + ', ' + office['longitude'];
-    document.getElementById('office_coordinates').textContent = coordinates;
+  const td = document.getElementById('office_coordinates');
+  if (office['latitude'] === null || office['longitude'] === null) {
+    td.textContent = 'N/A';
+  } else {
+    const lat = Number(office['latitude']);
+    const lon = Number(office['longitude']);
+    const pad = 0.05;
+    const bbox = (lon - pad) + ',' + (lat - pad) + ',' + (lon + pad) + ',' + (lat + pad);
+    const marker = lat + ',' + lon;
+    const iframe = td.querySelector('iframe');
+    iframe.src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&marker=${marker}`;
+    const link = td.querySelector('a');
+    link.href = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=12/${lat}/${lon}`;
   }
 
   const div = document.getElementById('photo_div');
