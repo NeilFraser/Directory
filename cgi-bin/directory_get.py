@@ -221,7 +221,7 @@ def json_employee(query):
 # Fetch summary data of all offices.
 def json_offices(query):
   (myConn, myCursor) = directory_utils.open()
-  myCursor.execute("SELECT id, name, latitude, longitude, count(Sub.office) FROM Offices LEFT JOIN (SELECT office FROM Employees INNER JOIN Employees_Offices ON id = employee WHERE active = 1) Sub on Sub.office = id GROUP BY id, name, latitude, longitude ORDER BY count(Sub.office) DESC")
+  myCursor.execute("SELECT id, name, latitude, longitude, count(Sub.office) FROM Offices LEFT JOIN (SELECT office FROM Employees INNER JOIN Employees_Offices ON id = employee WHERE active = 1) Sub ON Sub.office = id GROUP BY id, name, latitude, longitude ORDER BY count(Sub.office) DESC")
   offices_result = myCursor.fetchall()
   directory_utils.close(myConn, myCursor)
   offices_data = []
