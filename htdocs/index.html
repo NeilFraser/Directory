@@ -3,18 +3,32 @@
   <title>Directory</title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <style>
+#grid {
+  display: grid;
+  grid-template-columns: 60px 200px;
+  gap: 2em;
+  margin: 2em;
+  align-items: center;
+}
+#grid > img {
+  justify-self: center;
+}
+#grid > a {
+  justify-self: start;
+}
   </style>
 </head>
 <body>
   <h1>Directory</h1>
-  <p>
+  <div id="grid">
+    <img class="photo_icon" src="uploads/employees/placeholder.svg">
     <a href="employees.html">Employees</a>
-  </p>
-  <p>
+
+    <img class="photo_icon" src="uploads/offices/placeholder.svg">
     <a href="offices.html">Offices</a>
-  </p>
-  <p>
+
+    <img class="photo_icon" src="birthday.svg">
     <a href="birthdays.html">Birthdays</a>
-  </p>
+  </div>
 </body>
 </html>

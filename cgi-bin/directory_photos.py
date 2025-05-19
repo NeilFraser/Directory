@@ -1,5 +1,6 @@
 import directory_config
 import os
+import random
 import re
 import shutil
 
@@ -57,7 +58,7 @@ def delete_images(type, id):
 
 # Delete one specific image.
 def delete_image(type, id, filename):
-  if not re.match(r"_?\d+\.\w+", filename):
+  if not re.match(r"\d+_\w+\.\w+", filename):
     raise Exception("Illegal filename")
   dir = path(type, id)
   # Delete the image file
@@ -87,24 +88,28 @@ def add_image(type, id, image_bytes, ext):
   dir = path(type, id)
   if not os.path.isdir(dir):
     os.mkdir(dir)
-  filename = str(number) + "." + ext
+  filename = str(number) + "_" + random_string() + "." + ext
   with open(os.path.join(dir, filename), "wb") as f:
     f.write(image_bytes)
   return filename
 
 
-# Add a leading underscore to promote an image to the top.
-def promote_image(type, id, filename):
-  if filename.startswith('_'):
-    return  # This file is already promoted.
+# Rename an image to a new order.
+def rename_image(type, id, filename, order):
+  if not re.match(r"\d+_\w+\.\w+", filename):
+    raise Exception("Illegal filename")
+  if filename.startswith(str(order) + "_"):
+    return  # No need to rename.
+  dir = path(type, id)
+  # Rename the image file
+  try:
+    new_filename = str(order) + "_" + random_string() + "." + filename.split(".")[-1]
+    os.rename(os.path.join(dir, filename), os.path.join(dir, new_filename))
+  except FileNotFoundError:
+    pass
 
-  # Demote any existing promoted image.
-  names = list_images(type, id)
-  if filename not in names:
-    raise Exception("Image does not exist")
-  for name in names:
-    if name.startswith('_'):
-      os.rename(os.path.join(path(type, id), name), os.path.join(path(type, id), name[1:]))
 
-  # Promote the requested image.
-  os.rename(os.path.join(path(type, id), filename), os.path.join(path(type, id), "_" + filename))
+# Random 6 character string.
+def random_string():
+  soup = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+  return "".join(random.choices(soup, k=6))

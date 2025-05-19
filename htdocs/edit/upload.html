@@ -1,0 +1,17 @@
+<html>
+<head>
+  <title>Directory: Upload Image</title>
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <script type="module" src="upload.js"></script>
+</head>
+<body>
+  <h1><a href="../">Directory</a> &gt; <strong>Upload</strong></h1>
+  <form method="POST" action="/cgi-bin/directory_multipart.py" enctype="multipart/form-data">
+    <input type="hidden" name="nav" value="upload">
+    <input type="hidden" name="type" value="employees">
+    <input type="hidden" name="id" value="123">
+    <input type="file" name="image" accept="image/png, image/gif, image/jpeg"><br>
+    <input type="submit">
+  </form>
+</body>
+</html>

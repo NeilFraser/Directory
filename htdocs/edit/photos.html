@@ -3,22 +3,66 @@
   <title>Directory: Edit Photos</title>
   <link rel="stylesheet" type="text/css" href="../style.css">
   <script type="module" src="photos.js"></script>
+  <style>
+.delete_icon {
+  cursor: pointer;
+  max-width: 30px;
+  position: absolute;
+  margin-left: -40px;
+  margin-top: 10px;
+  opacity: 0.5;
+}
+
+.delete_icon:hover {
+  opacity: 1;
+}
+.reorder_photo_span {
+  cursor: grab; /* Indicate draggability */
+  transition: transform 0.2s ease-in-out;
+}
+
+.reorder_photo_span.dragging {
+  opacity: 0.5;
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  cursor: grabbing;
+}
+
+/* Style for the drop target area when an item is dragged over it */
+.reorder_photo_span.drag-over {
+  border-color: #007bff; /* Highlight color */
+  background-color: #e9f5ff;
+}
+
+/* Placeholder styling (optional, for more visual feedback) */
+.placeholder {
+  width: 150px;
+  height: 180px; /* Adjust based on your reorder_photo_span height */
+  background-color: #f0f0f0;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  margin: 10px; /* Same as reorder_photo_span padding roughly */
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+}
+  </style>
 </head>
 <body>
   <h1><a href="../">Directory</a> &gt; <a id="type" href="#">--</a> &gt; <strong>Edit Photos</strong></h1>
 
   <h2 id="name">--</h2>
 
-  <div id="photo_div"></div>
+  <div id="reorder_msg">Drag photos to reorder</div>
+  <div id="photo_gallery"></div>
 
-  <h3>Upload new photograph</h3>
-  <form method="POST" action="/cgi-bin/directory_multipart.py" enctype="multipart/form-data">
+  <h3>Upload new photograph (maximum of <span id="maxPhotos">...</span>)</h3>
+  <form method="POST" action="#" enctype="multipart/form-data" id="uploadForm">
     <input type="hidden" name="nav" value="uploadPhoto">
     <input type="hidden" name="type" id="uploadType" value="">
     <input type="hidden" name="id" id="uploadId" value="">
-    <input type="hidden" name="name" id="uploadName" value="">
-    <input type="file" name="image" accept="image/png, image/gif, image/jpeg"><br>
-    <input type="submit" value="Upload">
+    <input type="file" name="photo" accept="image/png, image/gif, image/jpeg" id="uploadPhoto" disabled="disabled">
+    <p>
+      <input type="submit" value="Upload" id="uploadSubmit" disabled="disabled">
+    </p>
   </form>
 
 </body>

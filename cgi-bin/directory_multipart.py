@@ -74,25 +74,22 @@ def print_diagnostic(boundary, params):
 
 
 def json_uploadPhoto(params):
-  if "image" not in params:
-    return {"error": "No image"}
+  if "photo" not in params:
+    return {"error": "No photo"}
   if "type" not in params:
     return {"error": "No type"}
   if "id" not in params:
     return {"error": "No id"}
-  if "name" not in params:
-    return {"error": "No name"}
 
   type = params["type"]["Data"].decode("utf-8")
   directory_photos.validate_type(type)
-  name = params["name"]["Data"].decode("utf-8")
 
   try:
     id = int(params["id"]["Data"])
   except ValueError:
     return {"error": "Invalid id"}
 
-  image_param = params["image"]
+  image_param = params["photo"]
   image = image_param["Data"]
   m = re.search(r' filename="[^"]*\.(\w+)"', image_param["Content-Disposition"])
   if not m:
@@ -101,12 +98,9 @@ def json_uploadPhoto(params):
     directory_photos.add_image(type, id, image, m.group(1))
   except (Exception, NameError) as e:
     return {"error": str(e)}
-  # Redirect to the photos page.
-  print("Status: 302 Found")
-  print("Location: /../edit/photos.html?" + urlencode({"type": type, "id": id, "name": name}))
-  print("Content-type: text/plain")
-  print()
-  print ("Upload successful.  Redirecting to photos editor...")
+  # Fetch all the photographs.
+  photos = directory_photos.list_images(type, id)
+  return {"photos": photos}
 
 
 # Parse the multipart request and route to the requested handler.

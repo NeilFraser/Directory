@@ -68,11 +68,12 @@ function renderOffice(office, photos) {
     link.href = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=12/${lat}/${lon}`;
   }
 
-  const div = document.getElementById('photo_div');
+  const div = document.getElementById('photo_gallery');
   div.innerHTML = '';
   photos.forEach(function (photo) {
     const span = document.createElement('span');
     const img = new Image();
+    img.className = 'photo';
     img.src = `uploads/offices/${id}/${photo}`;
     span.appendChild(img);
     div.appendChild(span);

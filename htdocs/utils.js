@@ -64,7 +64,7 @@ export function getParam(name) {
     const tuple = param.split('=');
     if (tuple.length === 2) {
       if (name === decodeURIComponent(tuple[0])) {
-        return decodeURIComponent(tuple[1]);
+        return decodeURIComponent(tuple[1]).replaceAll('+', ' ');
       }
     }
   }

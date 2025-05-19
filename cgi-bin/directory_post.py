@@ -235,7 +235,24 @@ def delete_photo(query):
 
   # Delete all images belonging to this office.
   directory_photos.delete_image(type, id, filename)
-  return {"deleted": True}
+  # Fetch all the photographs.
+  photos = directory_photos.list_images(type, id)
+  return {"photos": photos}
+
+
+def reorder_photos(query):
+  type = query.get("type", None)
+  id = int(query.get("id", None))
+  order = query.get("photos", None)
+  if order:
+    order = order.split("\n")
+    for i in range(len(order)):
+      filename = order[i]
+      # Rename the file to the new order.
+      directory_photos.rename_image(type, id, filename, i + 1)
+  # Fetch all the photographs.
+  photos = directory_photos.list_images(type, id)
+  return {"photos": photos}
 
 
 # Parse the POST request and route to the requested handler.
@@ -262,6 +279,8 @@ else:
     data = skills(params)
   elif nav == "delete_photo":
     data = delete_photo(params)
+  elif nav == "reorder_photos":
+    data = reorder_photos(params)
   else:
     data = {"error": "Unknown nav value"}
   print("Content-type: application/json")

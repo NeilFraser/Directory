@@ -54,7 +54,7 @@ function renderEmployees(employees, offices) {
     const id = parseInt(employee['id']);
     const photo = employee['photo'] || null;
     const photoUrl = 'uploads/employees/' +
-        (photo ? id + '/' + utils.htmlEscape(photo) : 'placeholder.png');
+        (photo ? id + '/' + utils.htmlEscape(photo) : 'placeholder.svg');
     const name = utils.htmlEscape(employee['name'] || '--');
     const active = employee['active'] === 1
     let email = utils.htmlEscape(employee['email'] || '');
