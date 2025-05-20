@@ -1,3 +1,8 @@
+#  SPDX-FileCopyrightText: 2025 Neil Fraser
+#  SPDX-License-Identifier: Apache-2.0
+
+# Utility functions for handling photos.
+
 import directory_config
 import os
 import random
@@ -8,7 +13,7 @@ import shutil
 # Allowed image file extensions.
 IMAGE_EXTS = ("jpg", "jpeg", "gif", "png")
 
-# This is an employee directory, not Google Photos.
+# This is an employee directory, not Instagram.
 MAX_IMAGES = 4
 
 

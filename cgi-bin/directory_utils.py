@@ -1,8 +1,14 @@
+#  SPDX-FileCopyrightText: 2025 Neil Fraser
+#  SPDX-License-Identifier: Apache-2.0
+
+# Utility functions for CGI parsing and database access.
+
 import directory_config
 import mysql.connector
-from urllib.parse import unquote_plus
 import os
+
 from sys import stdin
+from urllib.parse import unquote_plus
 
 
 # Ensure that an X-Requested-With HTTP header was sent.

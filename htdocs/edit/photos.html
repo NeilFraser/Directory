@@ -47,23 +47,25 @@
   </style>
 </head>
 <body>
-  <h1><a href="../">Directory</a> &gt; <a id="type" href="#">--</a> &gt; <strong>Edit Photos</strong></h1>
+  <header>
+    <a href="../">Directory</a> &gt; <a id="type" href="#">--</a> &gt; <strong>Edit Photos</strong>
+  </header>
+  <main>
+    <h2 id="name">--</h2>
 
-  <h2 id="name">--</h2>
+    <div id="reorder_msg">Drag photos to reorder</div>
+    <div id="photo_gallery"></div>
 
-  <div id="reorder_msg">Drag photos to reorder</div>
-  <div id="photo_gallery"></div>
-
-  <h3>Upload new photograph (maximum of <span id="maxPhotos">...</span>)</h3>
-  <form method="POST" action="#" enctype="multipart/form-data" id="uploadForm">
-    <input type="hidden" name="nav" value="uploadPhoto">
-    <input type="hidden" name="type" id="uploadType" value="">
-    <input type="hidden" name="id" id="uploadId" value="">
-    <input type="file" name="photo" accept="image/png, image/gif, image/jpeg" id="uploadPhoto" disabled="disabled">
-    <p>
-      <input type="submit" value="Upload" id="uploadSubmit" disabled="disabled">
-    </p>
-  </form>
-
+    <h3>Upload new photograph (maximum of <span id="maxPhotos">...</span>)</h3>
+    <form method="POST" action="#" enctype="multipart/form-data" id="uploadForm">
+      <input type="hidden" name="nav" value="uploadPhoto">
+      <input type="hidden" name="type" id="uploadType" value="">
+      <input type="hidden" name="id" id="uploadId" value="">
+      <input type="file" name="photo" accept="image/png, image/gif, image/jpeg" id="uploadPhoto" disabled="disabled">
+      <p>
+        <input type="submit" value="Upload" id="uploadSubmit" disabled="disabled">
+      </p>
+    </form>
+  </main>
 </body>
 </html>

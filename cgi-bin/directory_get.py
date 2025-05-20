@@ -1,4 +1,8 @@
 #!C:\Users\neilf\AppData\Local\Microsoft\WindowsApps\python3.exe
+#  SPDX-FileCopyrightText: 2025 Neil Fraser
+#  SPDX-License-Identifier: Apache-2.0
+
+# CGI script to handle all GET requests.
 
 import directory_photos
 import directory_utils

@@ -1,4 +1,8 @@
 #!C:\Users\neilf\AppData\Local\Microsoft\WindowsApps\python3.exe
+#  SPDX-FileCopyrightText: 2025 Neil Fraser
+#  SPDX-License-Identifier: Apache-2.0
+
+# CGI script to handle all multipart form data.
 
 import directory_photos
 import json
@@ -7,7 +11,7 @@ import re
 
 from html import escape
 from sys import stdin
-from urllib.parse import urlencode
+
 
 def getBoundary():
   ct = os.environ.get("CONTENT_TYPE", "")

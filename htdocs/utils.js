@@ -1,4 +1,16 @@
 /**
+ * @license
+ * Copyright 2025 Neil Fraser
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/**
+ * @fileoverview JavaScript utilities shared by the whole site.
+ * @author neil.fraser@gmail.com (Neil Fraser)
+ */
+
+
+/**
  * Get an XHR request from the server.
  * @param {!Object} options Options for the request.
  */

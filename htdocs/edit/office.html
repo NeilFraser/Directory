@@ -5,41 +5,45 @@
   <script type="module" src="office.js"></script>
 </head>
 <body>
-  <h1><a href="../">Directory</a> &gt; <a href="../offices.html">Offices</a> &gt; <strong>Edit</strong></h1>
-  <table>
-    <tr>
-      <th>Name</th>
-      <td><input id="office_name" type="text"></td>
-    </tr>
-    <tr>
-      <th>Address</th>
-      <td><textarea id="office_address"></textarea></td>
-    </tr>
-    <tr>
-      <th>Coordinates</th>
-      <td>
-        <input id="office_latitude" type="text">,
-        <input id="office_longitude" type="text">
-        <a href="https://www.openstreetmap.org/" target="edit-map">Lookup <img src="../external-link.png"></a>
-      </td>
-    </tr>
-    <tr>
-      <th>Photos</th>
-      <td><a id="office_photos" href="#" target="edit-photos-office-">Edit photos. <img src="../external-link.png"></a></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>
-        <button id="saveButton">Save</button>
-        <button id="cancelButton">Cancel</button>
-      </td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>
-        <button id="deleteButton">Delete</button>
-      </td>
-    </tr>
-  </table>
+  <header>
+    <a href="../">Directory</a> &gt; <a href="../offices.html">Offices</a> &gt; <strong>Edit</strong>
+  </header>
+  <main>
+    <table>
+      <tr>
+        <th>Name</th>
+        <td><input id="office_name" type="text"></td>
+      </tr>
+      <tr>
+        <th>Address</th>
+        <td><textarea id="office_address" rows="4" cols="40"></textarea></td>
+      </tr>
+      <tr>
+        <th>Coordinates</th>
+        <td>
+          <input id="office_latitude" type="text">,
+          <input id="office_longitude" type="text">
+          <a href="https://www.openstreetmap.org/" target="edit-map">Lookup <img src="../external-link.png"></a>
+        </td>
+      </tr>
+      <tr>
+        <th>Photos</th>
+        <td><a id="office_photos" href="#" target="edit-photos-office-">Edit photos. <img src="../external-link.png"></a></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <button id="saveButton">Save</button>
+          <button id="cancelButton">Cancel</button>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <button id="deleteButton">Delete</button>
+        </td>
+      </tr>
+    </table>
+  </main>
 </body>
 </html>

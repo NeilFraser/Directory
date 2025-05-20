@@ -2,14 +2,19 @@
 
 body {
   font-family: sans-serif;
+  margin: 0;
 }
 
-h1 {
+header {
   font-weight: normal;
   background-color: #93b0e5;
   border-bottom: 5px solid #ccc;
-  padding: 1em;
-  margin: -1ex -1ex 1ex;
+  font-size: xx-large;
+  padding: 1ex;
+}
+
+main {
+  padding: 1ex;
 }
 
 a:hover {

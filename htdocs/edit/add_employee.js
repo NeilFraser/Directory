@@ -1,3 +1,13 @@
+/**
+ * @license
+ * Copyright 2025 Neil Fraser
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/**
+ * @fileoverview JavaScript for the edit/add_employee.html page.
+ * @author neil.fraser@gmail.com (Neil Fraser)
+ */
 import * as utils from '../utils.js';
 
 /**
