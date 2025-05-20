@@ -73,16 +73,18 @@ def save_employee(query):
   myCursor.execute("DELETE FROM Employees_Skills WHERE employee = %s", (id,))
   myCursor.execute("DELETE FROM Employees_Languages WHERE employee = %s", (id,))
 
-  if len(offices) > 0:
-    office_data = []
-    for office in offices:
+  office_data = []
+  for office in offices:
+    if re.match(r"^\d+$", office):
       office_data.append("(%d,%d)" % (id, int(office)))
+  if len(office_data) > 0:
     myCursor.execute("INSERT INTO Employees_Offices (employee, office) VALUES %s" % ",".join(office_data))
 
-  if len(skills) > 0:
-    skill_data = []
-    for skill in skills:
+  skill_data = []
+  for skill in skills:
+    if re.match(r"^\d+$", skill):
       skill_data.append("(%d,%d)" % (id, int(skill)))
+  if len(skill_data) > 0:
     myCursor.execute("INSERT INTO Employees_Skills (employee, skill) VALUES %s" % ",".join(skill_data))
 
   language_data = []
@@ -122,6 +124,8 @@ def delete_employee(query):
   if id > 0:
     (myConn, myCursor) = directory_utils.open()
     myCursor.execute("DELETE FROM Employees_Offices WHERE employee = %s", (id,))
+    myCursor.execute("DELETE FROM Employees_Languages WHERE employee = %s", (id,))
+    myCursor.execute("DELETE FROM Employees_Skills WHERE employee = %s", (id,))
     myCursor.execute("DELETE FROM Employees WHERE id = %s", (id,))
     myConn.commit()
     deleted = myCursor.rowcount

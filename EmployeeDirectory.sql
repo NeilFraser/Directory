@@ -39,6 +39,51 @@ CREATE TABLE languages (
   name varchar(255) NOT NULL
 );
 
+INSERT INTO languages (iso, name) VALUES
+  ('ar', 'Arabic'),
+  ('bg', 'Bulgarian'),
+  ('bn', 'Bengali'),
+  ('cs', 'Czech'),
+  ('da', 'Danish'),
+  ('de', 'German'),
+  ('el', 'Greek'),
+  ('en', 'English'),
+  ('es', 'Spanish'),
+  ('et', 'Estonian'),
+  ('fi', 'Finnish'),
+  ('fr', 'French'),
+  ('he', 'Hebrew'),
+  ('hi', 'Hindi'),
+  ('hr', 'Croatian'),
+  ('hu', 'Hungarian'),
+  ('id', 'Indonesian'),
+  ('it', 'Italian'),
+  ('ja', 'Japanese'),
+  ('jv', 'Javanese'),
+  ('ko', 'Korean'),
+  ('lt', 'Lithuanian'),
+  ('lv', 'Latvian'),
+  ('nl', 'Dutch'),
+  ('no', 'Norwegian'),
+  ('pa', 'Punjabi'),
+  ('pl', 'Polish'),
+  ('pt', 'Portuguese'),
+  ('ro', 'Romanian'),
+  ('ru', 'Russian'),
+  ('sk', 'Slovak'),
+  ('sl', 'Slovenian'),
+  ('sw', 'Swahili'),
+  ('ta', 'Tamil'),
+  ('th', 'Thai'),
+  ('tr', 'Turkish'),
+  ('uk', 'Ukrainian'),
+  ('ur', 'Urdu'),
+  ('vi', 'Vietnamese'),
+  ('zh', 'Chinese'),
+  ('zu', 'Zulu');
+-- Add more languages as needed.
+-- See https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
+
 -- Many-to-many relationship between employees and languages.
 -- A language may be possessed by any number of employees.
 -- An employee may have any number of languages.

@@ -71,9 +71,6 @@ function renderPhotos(photos) {
   console.log('Photos:', photos);
   if (!photos) return;
   serverPhotos = photos;
-  if (photos.length < 2) {
-    document.getElementById('reorder_msg').style.display = 'none';
-  }
   const div = document.getElementById('photo_gallery');
   div.innerHTML = '';
   photos.forEach(function(photo) {
@@ -253,4 +250,5 @@ function setFormEnabled() {
     uploadPhoto.disabled = false;
     uploadSubmit.disabled = false;
   }
+  document.getElementById('reorder_msg').style.display = (photoCount < 2) ? 'none': 'block';
 }
