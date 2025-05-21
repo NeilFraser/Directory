@@ -3,6 +3,38 @@
   <title>Directory: Edit Employee</title>
   <link rel="stylesheet" type="text/css" href="../style.css">
   <script type="module" src="employee.js"></script>
+  <style>
+    #photoEditorMask {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.5);
+      display: none;
+    }
+    #photoEditor {
+      position: fixed;
+      top: 80px;
+      width: 90%;
+      left: 5%;
+      height: calc(100% - 160px);
+      display: none;
+      background-color: #fff;
+    }
+  </style>
+  <script>
+    /**
+     * Close the photo editor.
+     * Needs to be called from the iframe.
+     */
+    function closePhotoEditor() {
+      document.getElementById('photoEditorMask').style.display = 'none';
+      const iframe = document.getElementById('photoEditor');
+      iframe.src = '';
+      iframe.style.display = 'none';
+    }
+  </script>
 </head>
 <body>
   <header>
@@ -36,7 +68,7 @@
       </tr>
       <tr>
         <th>Photos</th>
-        <td><a id="employee_photos" href="#" target="edit-photos-employee-">Edit photos. <img src="../external-link.png"></a></td>
+        <td><button id="photosButton">Edit photos...</button></td>
       </tr>
       <tr>
         <th>Skills</th>
@@ -96,6 +128,9 @@
         </td>
       </tr>
     </table>
+
+    <div id="photoEditorMask"></div>
+    <iframe id="photoEditor"></iframe>
   </main>
 </body>
 </html>

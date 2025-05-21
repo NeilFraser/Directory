@@ -26,10 +26,7 @@ let serverPhotos = [];
 
 let maxPhotos = NaN;
 
-const types = {
-  'employees': {name: 'Employees', url: '../employees.html'},
-  'offices': {name: 'Offices', url: '../offices.html'},
-};
+const types = ['employees', 'offices'];
 
 /**
  * When the page has loaded, fetch then render the data.
@@ -42,13 +39,9 @@ function onload() {
 
   // Get the type (employees or offices) from the URL.
   type = utils.getParam('type') || '';
-  const typeInfo = types[type];
-  if (!typeInfo) {
+  if (!types.includes(type)) {
     throw TypeError('Unknown type: ' + type);
   }
-  const a = document.getElementById('type');
-  a.textContent = typeInfo.name;
-  a.href = typeInfo.url;
 
   // Get the ID from the URL.
   id = parseInt(utils.getParam('id')) || 0;

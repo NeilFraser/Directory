@@ -33,6 +33,7 @@ function onload() {
     });
   }
 
+  document.getElementById('photosButton').addEventListener('click', openPhotoEditor);
   document.getElementById('saveButton').addEventListener('click', saveOffice);
   document.getElementById('cancelButton').addEventListener('click', function() {
     window.location.href = '../office.html?' + id;
@@ -60,9 +61,7 @@ function renderOffice(office) {
   }
 
   const name = office['name'] || '';
-  const nameInput = document.getElementById('office_name');
-  nameInput.value = name;
-  nameInput.addEventListener('change', updatePhotoLink);
+  document.getElementById('office_name').value = name;
 
   let address = office['address'] || '';
   document.getElementById('office_address').value = address;
@@ -72,13 +71,6 @@ function renderOffice(office) {
 
   const longitude = office['longitude'] || '';
   document.getElementById('office_longitude').value = longitude;
-
-  const photoLink = document.getElementById('office_photos');
-  photoLink.target += id;
-  function updatePhotoLink() {
-    photoLink.href = 'photos.html?type=offices&id=' + id + '&name=' + encodeURIComponent(nameInput.value);
-  }
-  updatePhotoLink();
 }
 
 /**
@@ -128,4 +120,15 @@ function deleteOffice() {
       }
     }
   });
+}
+
+/**
+ * Open the photo editor.
+ */
+function openPhotoEditor() {
+  document.getElementById('photoEditorMask').style.display = 'block';
+  const iframe = document.getElementById('photoEditor');
+  iframe.src = 'photos.html?type=offices&id=' + id +
+      '&name=' + encodeURIComponent(document.getElementById('office_name').value);
+  iframe.style.display = 'block';
 }

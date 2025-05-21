@@ -4,6 +4,9 @@
   <link rel="stylesheet" type="text/css" href="../style.css">
   <script type="module" src="photos.js"></script>
   <style>
+#closeButton {
+  float: right;
+}
 .delete_icon {
   cursor: pointer;
   max-width: 30px;
@@ -47,11 +50,9 @@
   </style>
 </head>
 <body>
-  <header>
-    <a href="../">Directory</a> &gt; <a id="type" href="#">--</a> &gt; <strong>Edit Photos</strong>
-  </header>
   <main>
-    <h2 id="name">--</h2>
+    <button id="closeButton" onclick="parent.closePhotoEditor()">Close</button>
+    <h2>Edit Photos for <span id="name"></span></h2>
 
     <div id="reorder_msg">Drag photos to reorder</div>
     <div id="photo_gallery"></div>

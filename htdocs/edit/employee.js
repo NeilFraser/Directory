@@ -35,6 +35,7 @@ function onload() {
 
   document.getElementById('addLanguage').addEventListener('click', addLanguage);
 
+  document.getElementById('photosButton').addEventListener('click', openPhotoEditor);
   document.getElementById('saveButton').addEventListener('click', saveEmployee);
   document.getElementById('cancelButton').addEventListener('click', function() {
     window.location.href = '../employees.html';
@@ -69,9 +70,7 @@ function renderEmployee(employee, offices, skills, languages) {
   }
 
   const name = employee['name'] || '';
-  const nameInput = document.getElementById('employee_name');
-  nameInput.value = name;
-  nameInput.addEventListener('change', updatePhotoLink);
+  document.getElementById('employee_name').value = name;
 
   let email = employee['email'] || '';
   document.getElementById('employee_email').value = email;
@@ -84,13 +83,6 @@ function renderEmployee(employee, offices, skills, languages) {
 
   const about = employee['about'] || '';
   document.getElementById('employee_about').value = about;
-
-  const photoLink = document.getElementById('employee_photos');
-  photoLink.target += id;
-  function updatePhotoLink() {
-    photoLink.href = 'photos.html?type=employees&id=' + id + '&name=' + encodeURIComponent(nameInput.value);
-  }
-  updatePhotoLink();
 
   const birthday = parseInt(employee['birthday']) || '';
   document.getElementById('employee_birthday').value = birthday;
@@ -236,4 +228,15 @@ function deleteEmployee() {
       }
     }
   });
+}
+
+/**
+ * Open the photo editor.
+ */
+function openPhotoEditor() {
+  document.getElementById('photoEditorMask').style.display = 'block';
+  const iframe = document.getElementById('photoEditor');
+  iframe.src = 'photos.html?type=employees&id=' + id +
+      '&name=' + encodeURIComponent(document.getElementById('employee_name').value);
+  iframe.style.display = 'block';
 }
