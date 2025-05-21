@@ -16,6 +16,7 @@ This is a free and open source employee directory for small and medium organizat
 * Office details:
   * Name, address
   * Latitude and Longitude
+  * List of employees
   * Photographs
 
 The directory runs as simple CGI scripts using Python, meaning it can run on any web server on any operating system.  Any SQL database may be used, though it is currently configured for MySQL.  The client-side is pure HTML/CSS/JavaScript, with no frameworks or dependencies.  Browsing access can either be public or private, and editing can be open (e.g. a company-wide wiki) or restricted.
